@@ -4,21 +4,21 @@ This file tracks the migration progress from the legacy PHP application to the n
 
 ## Core Infrastructure
 
-- [/] **Layout:** Create a global `app/layout.tsx`.
-- [/] **Bootstrap Setup:** Import Bootstrap 5 CSS and JS into the global layout.
+- [x] **Layout:** Create a global `app/layout.tsx`.
+- [x] **Bootstrap Setup:** Import Bootstrap 5 CSS and JS into the global layout.
 - [ ] **Authentication:** Convert PHP session logic to Next.js middleware or NextAuth.
 
 ## Shared Components
 
-- [ ] **Navbar:** Create a reusable Navbar component (`components/Navbar.tsx`).
-- [ ] **Footer:** Create a reusable Footer component (`components/Footer.tsx`).
-- [ ] **Product Card:** Create a reusable Product Card component (`components/ProductCard.tsx`).
+- [x] **Navbar:** Create a reusable Navbar component (`components/Navbar.tsx`).
+- [x] **Footer:** Create a reusable Footer component (`components/Footer.tsx`).
+- [x] **Product Card:** Create a reusable Product Card component (`components/ProductCard.tsx`).
 - [ ] **Cart Sidebar:** Create a reusable Cart Sidebar component (`components/CartSidebar.tsx`).
 - [ ] **Chat Widget:** Re-implement the chat widget functionality.
 
 ## Pages
 
-- [ ] **Home Page:** Migrate `src/index.php`.
+- [x] **Home Page:** Migrate `src/index.php`.
 - [ ] **Product Listing Page:** Migrate `src/products.php`.
 - [ ] **Product Detail Page:** Migrate `src/product.php`.
 - [ ] **Cart Page:** Migrate `src/cart.php`.

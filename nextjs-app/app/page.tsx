@@ -1,65 +1,85 @@
-import Image from "next/image";
+import React from 'react';
+import ProductCard from '@/components/ProductCard';
 
-export default function Home() {
+const HomePage = () => {
+  // Dummy data for products
+  const products = [
+    { id: 1, name: 'Product 1', imageUrl: '/img/product-placeholder.jpg', price: 100, finalPrice: 80, discountPercentage: 20, isNewArrival: true, isBestSeller: false, isFlashSale: false, inStock: true },
+    { id: 2, name: 'Product 2', imageUrl: '/img/product-placeholder.jpg', price: 120, finalPrice: 120, discountPercentage: 0, isNewArrival: false, isBestSeller: true, isFlashSale: false, inStock: true },
+    { id: 3, name: 'Product 3', imageUrl: '/img/product-placeholder.jpg', price: 80, finalPrice: 80, discountPercentage: 0, isNewArrival: false, isBestSeller: false, isFlashSale: true, inStock: false },
+    { id: 4, name: 'Product 4', imageUrl: '/img/product-placeholder.jpg', price: 150, finalPrice: 135, discountPercentage: 10, isNewArrival: false, isBestSeller: false, isFlashSale: false, inStock: true },
+    { id: 5, name: 'Product 5', imageUrl: '/img/product-placeholder.jpg', price: 200, finalPrice: 200, discountPercentage: 0, isNewArrival: true, isBestSeller: false, isFlashSale: false, inStock: true },
+    { id: 6, name: 'Product 6', imageUrl: '/img/product-placeholder.jpg', price: 90, finalPrice: 90, discountPercentage: 0, isNewArrival: false, isBestSeller: false, isFlashSale: false, inStock: true },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="container-xxl">
+      {/* Hero Banner Section */}
+      <div className="row g-2 mb-4">
+        <div className="col-lg-3 d-none d-lg-block">
+          <div className="card h-100">
+            <div className="card-body">
+              <h5 className="card-title">Categories</h5>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">Electronics</li>
+                <li className="list-group-item">Computers</li>
+                <li className="list-group-item">Gaming</li>
+                <li className="list-group-item">Home Appliances</li>
+                <li className="list-group-item">Mobile Phones</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="col-lg-9">
+          <div className="card h-100 bg-dark text-white">
+            <div className="card-body d-flex align-items-center justify-content-center">
+              <div>
+                <h1 className="display-4 fw-bold">Welcome to QwenShop</h1>
+                <p className="lead">Discover premium electronics and accessories</p>
+                <a href="/products" className="btn btn-danger btn-lg">Shop Now</a>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
+      </div>
+
+      {/* Flash Sales Section */}
+      <section className="mb-4">
+        <h2 className="mb-3"><i className="fas fa-bolt text-danger me-2"></i> Flash Sales</h2>
+        <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3">
+          {products.map(product => (
+            <div className="col" key={product.id}>
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Best Sellers Section */}
+      <section className="mb-4">
+        <h2 className="mb-3"><i className="fas fa-fire text-danger me-2"></i> Best Sellers</h2>
+        <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3">
+          {products.slice(0, 6).map(product => (
+            <div className="col" key={product.id}>
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* New Arrivals Section */}
+      <section className="mb-4">
+        <h2 className="mb-3"><i className="fas fa-star text-warning me-2"></i> New Arrivals</h2>
+        <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3">
+          {products.filter(p => p.isNewArrival).map(product => (
+            <div className="col" key={product.id}>
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
-}
+};
+
+export default HomePage;
